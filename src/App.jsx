@@ -4,8 +4,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Routes, Route } from "react-router-dom";
 import { LoginPage } from "./components/page/LoginPage";
-import { DashboardPage } from "./components/page/DashboardPage";
-import { RegisterPage } from "./components/page/RegisterPage";
 import { useEffect, useState } from "react";
 
 function App() {
