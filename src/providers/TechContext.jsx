@@ -13,7 +13,7 @@ export function TechProvider({ children }) {
   const [editModal, setEditModal] = useState(false);
   const [editTech, setEditTech] = useState();
   const [createModal, setCreateModal] = useState(false);
-
+  const [deleteUserModal, setDeleteUserModal] = useState(false);
 
   const navigate = useNavigate();
 
@@ -73,11 +73,12 @@ export function TechProvider({ children }) {
   }
  
 
+
   async function deleteTechRequest() {
     let token = window.localStorage.getItem("@TOKEN");
     token = JSON.parse(token);
     try {
-      const response = await api.delete(`/users/techs/${editTech.id}`, {
+      const response = await api.delete(`client/${editTech.id}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -89,8 +90,19 @@ export function TechProvider({ children }) {
     } catch (error) {}
   }
 
+
+  function deleteUserRequest(){
+    console.log("alo")
+  }
+
   function createTechModal(data) {
+    console.log("clicou")
     setCreateModal(true);
+  }
+
+  function openUserModal(){
+    console.log("clicou")
+    setDeleteUserModal(true)
   }
 
   function closeEditModal() {
@@ -101,6 +113,9 @@ export function TechProvider({ children }) {
     setCreateModal(false);
   }
 
+  function closeDeleteModal() {
+    setDeleteUserModal(false)
+  }
 
   async function createTechRequest(data) {
     let token = window.localStorage.getItem("@TOKEN");
@@ -148,6 +163,11 @@ export function TechProvider({ children }) {
         editTechRequest,
         closeEditModal,
         closeCreateModal,
+        deleteUserModal,
+        setDeleteUserModal,
+        closeDeleteModal,
+        openUserModal,
+        deleteUserRequest
       }}
     >
       {children}

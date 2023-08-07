@@ -6,6 +6,7 @@ import { UserContext } from "../../providers/UserContext";
 import { TechContext } from "../../providers/TechContext";
 import { AddTechModal } from "../../components/AddTechModal";
 import { EditTechModal } from "../../components/EditTechModal";
+import { DeleteUserModal } from "../../components/DeleteUserModal";
 
 export function DashboardPage() {
   const { userData, setUserData, navigate } = useContext(UserContext);
@@ -16,6 +17,9 @@ export function DashboardPage() {
     showEditModal,
     logOut,
     createTechModal,
+    deleteUserModal,
+    openUserModal,
+    
   } = useContext(TechContext);
 
   return (
@@ -30,6 +34,8 @@ export function DashboardPage() {
             styled="TechList"
             showEditModal={showEditModal}
             createTechModal={createTechModal}
+            deleteUserModal={deleteUserModal}
+            openUserModal = {openUserModal}
           ></Section>
 
           {createModal ? <AddTechModal></AddTechModal> : <> </>}
@@ -38,6 +44,7 @@ export function DashboardPage() {
           ) : (
             <></>
           )}
+          {deleteUserModal ? <DeleteUserModal></DeleteUserModal> : <> </>}
         </MainDashboardContainer>
       )}
     </>

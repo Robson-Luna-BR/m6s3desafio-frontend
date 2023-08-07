@@ -13,14 +13,36 @@ import {
 } from "./style";
 import { v4 as uuid } from "uuid";
 import { Button } from "../Button";
+import { DeleteUserModal } from "../DeleteUserModal";
+import { useContext } from "react";
+import { TechContext } from "../../providers/TechContext";
 
-export function Section({ styled, userData, showEditModal, createTechModal }) {
+export function Section({
+  
+  styled,
+  userData,
+  showEditModal,
+  createTechModal,
+  deleteUserModal,
+  openUserModal,
+ 
+}) {
+  const { setDeleteUserModal } = useContext(TechContext);
   switch (styled) {
     case "UserInfo":
       return (
         <SectionUserInfo>
           <SectionUserName>Olá, {userData.name} </SectionUserName>
-
+          <Button
+            styled="ButtonBack"
+            click={() =>console.log("clicou")}
+            text="Editar"
+          ></Button>
+          <Button
+            styled="ButtonBack"
+            click={() =>setDeleteUserModal(true)}
+            text="Excluir"
+          ></Button>
           <SectionUserDescription>
             {userData.course_module}
           </SectionUserDescription>
@@ -33,7 +55,7 @@ export function Section({ styled, userData, showEditModal, createTechModal }) {
           <Border></Border>
           <SectionTechList>
             <TechHeaderItemAlign>
-              <TechTitle>Cliente</TechTitle>
+              <TechTitle>Clientes</TechTitle>
               <Button
                 click={createTechModal}
                 text="+"
@@ -45,13 +67,14 @@ export function Section({ styled, userData, showEditModal, createTechModal }) {
               {userData.client.map((element) => {
                 return (
                   <ListItem key={uuid()} onClick={() => showEditModal(element)}>
-                    <TechName>Clente:  {element.name}</TechName>
-                    <TechName>Email:  {element.email}</TechName>
-                    <TechName>Número:   {element.phoneNumber}</TechName>
+                    <TechName>Clente: {element.name}</TechName>
+                    <TechName>Email: {element.email}</TechName>
+                    <TechName>Número: {element.phoneNumber}</TechName>
                   </ListItem>
                 );
               })}
             </TechList>
+      
           </SectionTechList>
         </>
       );
