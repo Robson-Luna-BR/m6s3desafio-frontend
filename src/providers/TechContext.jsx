@@ -15,7 +15,7 @@ export function TechProvider({ children }) {
   const [createModal, setCreateModal] = useState(false);
   const [deleteUserModal, setDeleteUserModal] = useState(false);
   const [editUserModal, setEditUserModal] = useState(false);
-  const [refresh, setRefresh] = useState(false);
+  const [refresh, setRefresh] = useState(1);
 
   const navigate = useNavigate();
 
@@ -99,12 +99,8 @@ export function TechProvider({ children }) {
       toast.success("usuário com sucesso!");
 
       setEditUserModal(false);
-      setRefresh(true);
-      console.log(userData)
-      console.log(response)
-    } catch (error) {
-      console.log(error.message);
-    }
+      setRefresh(refresh + 1);
+    } catch (error) {}
   }
 
   async function deleteUserRequest() {
@@ -131,7 +127,6 @@ export function TechProvider({ children }) {
   }
 
   function openUserModal() {
-    console.log("clicou");
     setDeleteUserModal(true);
   }
 
