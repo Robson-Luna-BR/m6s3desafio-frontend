@@ -1,4 +1,3 @@
-import Logo from "../../components/img/logoKenzieHub.svg";
 import { BackgroundPage, LogoKenzie, RegisterTitle } from "./style";
 import { Button } from "../../components/Button";
 import { MainContainer } from "./style";
@@ -15,7 +14,6 @@ export function LoginPage() {
   return (
     <>
       <BackgroundPage>
-        <LogoKenzie alt="Logo Kenzie Hub" src={Logo} />
         <MainContainer>
           <FormTitle>Login</FormTitle>
           <FormLogin></FormLogin>
