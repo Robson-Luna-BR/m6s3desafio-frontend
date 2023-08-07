@@ -18,10 +18,7 @@ export function Input(
     ...rest
   },
   ref
-) 
-
-{
- 
+) {
   switch (styled) {
     case "inputDisable":
       return (
@@ -75,40 +72,36 @@ export function Input(
         </>
       );
 
-      case "inputCreateTech":
-        return (
-          <>
-            
-              <InputCreateTech
-               placeholder={placeholder}
-               id={id}
-               type={type}
-               value={inputValue}
-               disabled={disabled}
-               {...rest}
-               ref={ref}
-               />
-               {error ? <ErrorMessage>{error}</ErrorMessage> : null}
-            
-          </>
-        );
-
+    case "inputCreateTech":
+      return (
+        <>
+          <InputCreateTech
+            placeholder={placeholder}
+            id={id}
+            type={type}
+            value={inputValue}
+            disabled={disabled}
+            {...rest}
+            ref={ref}
+          />
+          {error ? <ErrorMessage>{error}</ErrorMessage> : null}
+        </>
+      );
 
     default:
       return (
         <>
           <InputDefault
-          placeholder={placeholder}
-          id={id}
-          type={type}
-          value={inputValue}
-          disabled={disabled}
-          {...rest}
-          ref={ref}
+            placeholder={placeholder}
+            id={id}
+            type={type}
+            value={inputValue}
+            disabled={disabled}
+            {...rest}
+            ref={ref}
           />
           {error ? <ErrorMessage>{error}</ErrorMessage> : null}
         </>
-       
       );
   }
 }

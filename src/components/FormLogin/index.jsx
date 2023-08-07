@@ -8,11 +8,9 @@ import { Button } from "../Button";
 import { UserContext } from "../../providers/UserContext";
 import { useContext } from "react";
 
-
 export function FormLogin() {
-
   const { userData, setUserData, loginForm, registerPage } =
-  useContext(UserContext);
+    useContext(UserContext);
 
   const formSchema = yup.object().shape({
     email: yup
@@ -31,9 +29,9 @@ export function FormLogin() {
     resolver: yupResolver(formSchema),
   });
 
-  function onSubmit(data){
-    loginForm(data)
-    reset()
+  function onSubmit(data) {
+    loginForm(data);
+    reset();
   }
 
   return (

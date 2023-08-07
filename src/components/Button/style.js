@@ -1,10 +1,7 @@
 import styled from "styled-components";
 
 export const LoginButton = styled.button`
- 
-
   background: var(--primary);
-
 
   border: 1.2182px solid var(--primary);
   border-radius: 4px;
@@ -28,8 +25,6 @@ export const LoginButton = styled.button`
 
   margin-top: 17.65px;
 `;
-
-
 
 export const RegisterPage = styled.button`
   width: 100%;
@@ -57,11 +52,8 @@ export const ButtonBack = styled.button`
   font-weight: 600;
   font-size: 12px;
   line-height: 28px;
-  
 
   text-align: center;
-
- 
 
   color: var(--grey-0);
 `;

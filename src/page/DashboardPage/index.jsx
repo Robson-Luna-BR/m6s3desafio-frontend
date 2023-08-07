@@ -20,8 +20,7 @@ export function DashboardPage() {
     createTechModal,
     deleteUserModal,
     openUserModal,
-    editUserModal
-    
+    editUserModal,
   } = useContext(TechContext);
 
   return (
@@ -37,15 +36,11 @@ export function DashboardPage() {
             showEditModal={showEditModal}
             createTechModal={createTechModal}
             deleteUserModal={deleteUserModal}
-            openUserModal = {openUserModal}
+            openUserModal={openUserModal}
           ></Section>
 
           {createModal ? <AddTechModal></AddTechModal> : <> </>}
-          {editModal  ? (
-            <EditTechModal></EditTechModal>
-          ) : (
-            <></>
-          )}
+          {editModal ? <EditTechModal></EditTechModal> : <></>}
           {deleteUserModal ? <DeleteUserModal></DeleteUserModal> : <> </>}
           {editUserModal ? <EditUserModal></EditUserModal> : <> </>}
         </MainDashboardContainer>

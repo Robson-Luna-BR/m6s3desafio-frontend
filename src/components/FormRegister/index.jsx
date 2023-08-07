@@ -15,9 +15,7 @@ export function FormRegister({ registerFormSend }) {
       .string()
       .required("Informe seu email")
       .email("Digite um formato de email válido"),
-    password: yup
-      .string()
-      .required("Informe sua senha"),
+    password: yup.string().required("Informe sua senha"),
     confirmPassword: yup
       .string()
       .required("Confirme sua senha")

@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-
 export const UserContext = createContext({});
 
 export function UserProvider({ children }) {
@@ -19,13 +18,11 @@ export function UserProvider({ children }) {
     let userId = window.localStorage.getItem("@USERID");
     userId && navigate("/dashboard");
   }, []);
-  
 
   async function loginForm(data) {
     try {
       const response = await api.post("/login", data);
-      console.log(response.data,"aquiiiiiiiii")
-      console.log(response.data.token[1],"aquiiiiiiiii")
+
       window.localStorage.clear();
       window.localStorage.setItem(
         "@TOKEN",
@@ -35,19 +32,15 @@ export function UserProvider({ children }) {
         "@USERID",
         JSON.stringify(response.data.token[1].id)
       );
-      
+
       setUserData(response.data.token[1]);
 
       navigate("/dashboard");
     } catch (error) {
       toast.error(error.response.data.message);
     }
-
   }
 
-
-
-  
   function registerPage() {
     navigate("/register");
   }

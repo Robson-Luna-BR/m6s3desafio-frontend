@@ -19,7 +19,10 @@ export function EditTechModal() {
 
   const formSchema = yup.object().shape({
     name: yup.string().required("Informe o nome do cliente"),
-    email: yup.string().required("Informe o email do cliente").email("informe um formato válido de email"),
+    email: yup
+      .string()
+      .required("Informe o email do cliente")
+      .email("informe um formato válido de email"),
   });
 
   const {
@@ -40,7 +43,7 @@ export function EditTechModal() {
         ></Header>
         <MainForm>
           <form onSubmit={handleSubmit(editTechRequest)}>
-          <InputTitle>Nome</InputTitle>
+            <InputTitle>Nome</InputTitle>
             <Input
               // disabled={true}
               // inputValue={editTech.title}
@@ -49,7 +52,7 @@ export function EditTechModal() {
             />
             <InputTitle></InputTitle>
             <InputTitle>Email</InputTitle>
-              <Input
+            <Input
               // disabled={true}
               // inputValue={editTech.title}
               {...register("email")}
@@ -57,14 +60,13 @@ export function EditTechModal() {
             />
             <InputTitle></InputTitle>
             <InputTitle>Telefone</InputTitle>
-              <Input
+            <Input
               // disabled={true}
               // inputValue={editTech.title}
               {...register("email")}
               placeholder="digite o email do cliente"
             />
 
-            
             <ButtonAlign>
               <Button
                 styled="ButtonSaveTechChange"

@@ -18,17 +18,14 @@ import { useContext } from "react";
 import { TechContext } from "../../providers/TechContext";
 
 export function Section({
-  
   styled,
   userData,
   showEditModal,
   createTechModal,
   deleteUserModal,
   openUserModal,
-  
- 
 }) {
-  const { setDeleteUserModal,setEditUserModal } = useContext(TechContext);
+  const { setDeleteUserModal, setEditUserModal } = useContext(TechContext);
   switch (styled) {
     case "UserInfo":
       return (
@@ -36,12 +33,12 @@ export function Section({
           <SectionUserName>Olá, {userData.name} </SectionUserName>
           <Button
             styled="ButtonBack"
-            click={() =>setEditUserModal(true)}
+            click={() => setEditUserModal(true)}
             text="Editar"
           ></Button>
           <Button
             styled="ButtonBack"
-            click={() =>setDeleteUserModal(true)}
+            click={() => setDeleteUserModal(true)}
             text="Excluir"
           ></Button>
           <SectionUserDescription>
@@ -75,7 +72,6 @@ export function Section({
                 );
               })}
             </TechList>
-      
           </SectionTechList>
         </>
       );

@@ -15,10 +15,7 @@ import { Button } from "../Button";
 export function DeleteUserModal() {
   const { deleteUserRequest, closeDeleteModal } = useContext(TechContext);
 
-  const formSchema = yup.object().shape({
-    
- 
-  });
+  const formSchema = yup.object().shape({});
 
   const {
     register,
@@ -30,7 +27,6 @@ export function DeleteUserModal() {
 
   return (
     <>
-    
       <CreateModal>
         <Header
           styled="HeaderModal"
@@ -47,9 +43,6 @@ export function DeleteUserModal() {
               text="Deletar usuário"
               onClick={deleteUserRequest}
             ></Button>
-         
-            
-           
           </form>
         </MainForm>
       </CreateModal>

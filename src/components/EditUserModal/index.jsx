@@ -14,14 +14,13 @@ import { ButtonAlign } from "../../page/DashboardPage/style";
 import { Button } from "../Button";
 
 export function EditUserModal() {
-  const { editUserRequest, closeEditUserModal } =
-    useContext(TechContext);
+  const { editUserRequest, closeEditUserModal } = useContext(TechContext);
 
   const formSchema = yup.object().shape({
     name: yup.string(),
     email: yup.string().email(),
     password: yup.string(),
-    phoneNumber: yup.string()
+    phoneNumber: yup.string(),
   });
 
   const {
@@ -42,7 +41,7 @@ export function EditUserModal() {
         ></Header>
         <MainForm>
           <form onSubmit={handleSubmit(editUserRequest)}>
-          <InputTitle>Nome</InputTitle>
+            <InputTitle>Nome</InputTitle>
             <Input
               // disabled={true}
               // inputValue={editTech.title}
@@ -51,7 +50,7 @@ export function EditUserModal() {
             />
             <InputTitle></InputTitle>
             <InputTitle>Email</InputTitle>
-              <Input
+            <Input
               // disabled={true}
               // inputValue={editTech.title}
               {...register("email")}
@@ -59,7 +58,7 @@ export function EditUserModal() {
             />
             <InputTitle></InputTitle>
             <InputTitle>Senha</InputTitle>
-              <Input
+            <Input
               // disabled={true}
               // inputValue={editTech.title}
               {...register("password")}
@@ -68,20 +67,18 @@ export function EditUserModal() {
 
             <InputTitle></InputTitle>
             <InputTitle>Telefone</InputTitle>
-              <Input
+            <Input
               // disabled={true}
               // inputValue={editTech.title}
               {...register("phoneNumber")}
               placeholder="digite novo telefone do usuário"
             />
 
-            
             <ButtonAlign>
               <Button
                 styled="ButtonSaveTechChange"
                 type="submit"
                 text="Salvar Alterações"
-              
               ></Button>
             </ButtonAlign>
           </form>

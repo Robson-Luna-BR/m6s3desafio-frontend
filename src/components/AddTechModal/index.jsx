@@ -16,9 +16,11 @@ export function AddTechModal() {
   const { createTechRequest, closeCreateModal } = useContext(TechContext);
 
   const formSchema = yup.object().shape({
-    
     name: yup.string().required("Informe o nome do cliente"),
-    email: yup.string().required("Informe o nome do cliente").email("Digite um formato de email válido"),
+    email: yup
+      .string()
+      .required("Informe o nome do cliente")
+      .email("Digite um formato de email válido"),
     phoneNumber: yup.string().required("Informe o telefone do cliente"),
   });
 
@@ -56,15 +58,14 @@ export function AddTechModal() {
               {...register("email")}
               error={errors.email?.message}
             />
-             <Input
+            <Input
               styled="inputCreateTech"
               type="text"
               placeholder="Digite o nº de contato"
               {...register("phoneNumber")}
               error={errors.phoneNumber?.message}
             />
-            
-           
+
             <Button
               styled="ButtonCreateTech"
               type="submit"

@@ -1,4 +1,3 @@
-
 import {
   HeaderDashboard,
   Border,
@@ -14,7 +13,6 @@ export function Header({ logOut, styled, textTitle, click }) {
       return (
         <>
           <HeaderDashboard>
-            
             <Button styled="ButtonLogOut" click={logOut} text="Sair"></Button>
           </HeaderDashboard>
 

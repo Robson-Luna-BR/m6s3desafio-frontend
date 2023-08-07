@@ -15,12 +15,9 @@ export function TechProvider({ children }) {
   const [createModal, setCreateModal] = useState(false);
   const [deleteUserModal, setDeleteUserModal] = useState(false);
   const [editUserModal, setEditUserModal] = useState(false);
-  const [refresh, setRefresh]= useState(false)
+  const [refresh, setRefresh] = useState(false);
 
   const navigate = useNavigate();
-
-
-
 
   useEffect(() => {
     let userId = window.localStorage.getItem("@USERID");
@@ -31,17 +28,14 @@ export function TechProvider({ children }) {
         userId = JSON.parse(userId);
 
         const response = await api.get(`/users/${userId}`);
-        console.log(response.data, "esse aqui")
+
         setUserData(response.data);
       } catch (error) {}
     }
     getUser();
   }, [refresh]);
 
-
-
   function showEditModal(element) {
-    console.log(element)
     setEditTech(element);
 
     setEditModal(true);
@@ -58,11 +52,9 @@ export function TechProvider({ children }) {
   }
 
   async function editTechRequest(data) {
-    console.log("alo")
     let token = window.localStorage.getItem("@TOKEN");
     token = JSON.parse(token);
-      console.log(editTech.id)
-      console.log(data)
+
     try {
       const response = await api.patch(`/client/${editTech.id}`, data, {
         headers: {
@@ -75,8 +67,6 @@ export function TechProvider({ children }) {
       toast.success("Alteração realizada com sucesso!");
     } catch (error) {}
   }
- 
-
 
   async function deleteTechRequest() {
     let token = window.localStorage.getItem("@TOKEN");
@@ -93,17 +83,14 @@ export function TechProvider({ children }) {
       closeEditModal();
     } catch (error) {}
   }
-  async function editUserRequest(data){
-    console.log(data,"*/*/*/*/*/*/*/*/*")
-   
+  async function editUserRequest(data) {
     let token = window.localStorage.getItem("@TOKEN");
     token = JSON.parse(token);
     let id = window.localStorage.getItem("@USERID");
-    id = JSON.parse(id)
-    console.log(id)
-    console.log(data)
+    id = JSON.parse(id);
+
     try {
-      const response = await api.patch(`users/${id}`,data, {
+      const response = await api.patch(`users/${id}`, data, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -111,44 +98,40 @@ export function TechProvider({ children }) {
       });
       toast.success("usuário com sucesso!");
 
-      
-      setEditUserModal(false)
-      setRefresh(true)
-      navigate("/dashboard")
+      setEditUserModal(false);
+      setRefresh(true);
+      navigate("/dashboard");
     } catch (error) {
-      console.log(error.message)
+      console.log(error.message);
     }
-    }
+  }
 
- async function deleteUserRequest(){
-  console.log("oi")
- 
-  let token = window.localStorage.getItem("@TOKEN");
-  token = JSON.parse(token);
-  let id = window.localStorage.getItem("@USERID");
-  id = JSON.parse(id)
-  console.log(id)
-  try {
-    const response = await api.delete(`users/${id}`, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    toast.success("Item deletado com sucesso!");
-    closeDeleteModal()
-    navigate("/")
-  } catch (error) {}
+  async function deleteUserRequest() {
+    let token = window.localStorage.getItem("@TOKEN");
+    token = JSON.parse(token);
+    let id = window.localStorage.getItem("@USERID");
+    id = JSON.parse(id);
+
+    try {
+      const response = await api.delete(`users/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      toast.success("Item deletado com sucesso!");
+      closeDeleteModal();
+      navigate("/");
+    } catch (error) {}
   }
 
   function createTechModal(data) {
-    console.log("clicou")
     setCreateModal(true);
   }
 
-  function openUserModal(){
-    console.log("clicou")
-    setDeleteUserModal(true)
+  function openUserModal() {
+    console.log("clicou");
+    setDeleteUserModal(true);
   }
 
   function closeEditModal() {
@@ -160,18 +143,18 @@ export function TechProvider({ children }) {
   }
 
   function closeDeleteModal() {
-    setDeleteUserModal(false)
+    setDeleteUserModal(false);
   }
 
   function closeEditUserModal() {
-    setEditUserModal(false)
+    setEditUserModal(false);
   }
 
   async function createTechRequest(data) {
     let token = window.localStorage.getItem("@TOKEN");
     token = JSON.parse(token);
-    let id= window.localStorage.getItem("@USERID")
-    id= JSON.parse(id)
+    let id = window.localStorage.getItem("@USERID");
+    id = JSON.parse(id);
 
     try {
       const response = await api.post(`/client/${id}`, data, {
@@ -193,8 +176,6 @@ export function TechProvider({ children }) {
     window.localStorage.clear();
     navigate("/");
   }
-
-
 
   return (
     <TechContext.Provider
@@ -221,7 +202,7 @@ export function TechProvider({ children }) {
         editUserModal,
         setEditUserModal,
         closeEditUserModal,
-        editUserRequest
+        editUserRequest,
       }}
     >
       {children}

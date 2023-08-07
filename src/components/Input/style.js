@@ -51,6 +51,4 @@ export const InputHidden = styled.input`
   display: none;
 `;
 
-
-export const InputCreateTech = styled(InputDefault)`
-`
+export const InputCreateTech = styled(InputDefault)``;
