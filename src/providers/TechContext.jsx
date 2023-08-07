@@ -65,14 +65,19 @@ export function TechProvider({ children }) {
   async function editTechRequest(data) {
     let token = window.localStorage.getItem("@TOKEN");
     token = JSON.parse(token);
+    let userId = window.localStorage.getItem("@USERID");
 
     try {
-      const response = await api.patch(`/client/${editTech.id}`, data, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await api.patch(
+        `/client/${editTech.id}/user/${userId}`,
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       setEditModal(false);
       updateUser();
@@ -85,13 +90,17 @@ export function TechProvider({ children }) {
   async function deleteTechRequest() {
     let token = window.localStorage.getItem("@TOKEN");
     token = JSON.parse(token);
+    let userId = window.localStorage.getItem("@USERID");
     try {
-      const response = await api.delete(`client/${editTech.id}`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await api.delete(
+        `client/${editTech.id}/user/${userId}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       toast.success("Item deletado com sucesso!");
       updateUser();
       closeEditModal();
