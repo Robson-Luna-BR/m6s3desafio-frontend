@@ -23,6 +23,7 @@ export function EditTechModal() {
       .string()
       .required("Informe o email do cliente")
       .email("informe um formato válido de email"),
+      phoneNumber:yup.string().required("dado obrigatório")
   });
 
   const {
@@ -49,6 +50,7 @@ export function EditTechModal() {
               // inputValue={editTech.title}
               {...register("name")}
               placeholder="digite o nome do cliente"
+              error={errors.name?.message}
             />
             <InputTitle></InputTitle>
             <InputTitle>Email</InputTitle>
@@ -57,14 +59,16 @@ export function EditTechModal() {
               // inputValue={editTech.title}
               {...register("email")}
               placeholder="digite o email do cliente"
+              error={errors.email?.message}
             />
             <InputTitle></InputTitle>
             <InputTitle>Telefone</InputTitle>
             <Input
               // disabled={true}
               // inputValue={editTech.title}
-              {...register("email")}
-              placeholder="digite o email do cliente"
+              {...register("phoneNumber")}
+              placeholder="digite nº do cliente"
+              error={errors.phoneNumber?.message}
             />
 
             <ButtonAlign>

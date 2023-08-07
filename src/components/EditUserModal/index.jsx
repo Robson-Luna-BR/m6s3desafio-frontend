@@ -17,10 +17,10 @@ export function EditUserModal() {
   const { editUserRequest, closeEditUserModal } = useContext(TechContext);
 
   const formSchema = yup.object().shape({
-    name: yup.string(),
-    email: yup.string().email(),
-    password: yup.string(),
-    phoneNumber: yup.string(),
+    name: yup.string().required("dado obrigatório"),
+    email: yup.string().email("Tem que ter um formato de email válido").required("dado obrigatório"),
+    password: yup.string().required("dado obrigatório"),
+    phoneNumber: yup.string().required("dado obrigatório"),
   });
 
   const {
@@ -47,6 +47,7 @@ export function EditUserModal() {
               // inputValue={editTech.title}
               {...register("name")}
               placeholder="digite o novo nome de usuário"
+              error={errors.name?.message}
             />
             <InputTitle></InputTitle>
             <InputTitle>Email</InputTitle>
@@ -55,6 +56,7 @@ export function EditUserModal() {
               // inputValue={editTech.title}
               {...register("email")}
               placeholder="digite o novo email do usuário"
+              error={errors.email?.message}
             />
             <InputTitle></InputTitle>
             <InputTitle>Senha</InputTitle>
@@ -63,6 +65,7 @@ export function EditUserModal() {
               // inputValue={editTech.title}
               {...register("password")}
               placeholder="digite a nova senha do usuário"
+              error={errors.password?.message}
             />
 
             <InputTitle></InputTitle>
@@ -72,6 +75,7 @@ export function EditUserModal() {
               // inputValue={editTech.title}
               {...register("phoneNumber")}
               placeholder="digite novo telefone do usuário"
+              error={errors.phoneNumber?.message}
             />
 
             <ButtonAlign>

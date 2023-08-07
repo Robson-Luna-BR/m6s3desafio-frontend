@@ -16,12 +16,12 @@ export function AddTechModal() {
   const { createTechRequest, closeCreateModal } = useContext(TechContext);
 
   const formSchema = yup.object().shape({
-    name: yup.string().required("Informe o nome do cliente"),
+    name: yup.string().required("Dado Obrigatório"),
     email: yup
       .string()
-      .required("Informe o nome do cliente")
+      .required("Dado Obrigatório")
       .email("Digite um formato de email válido"),
-    phoneNumber: yup.string().required("Informe o telefone do cliente"),
+    phoneNumber: yup.string().required("Dado Obrigatório"),
   });
 
   const {

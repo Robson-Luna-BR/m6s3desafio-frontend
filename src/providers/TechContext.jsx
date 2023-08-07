@@ -62,7 +62,8 @@ export function TechProvider({ children }) {
           Authorization: `Bearer ${token}`,
         },
       });
-
+      
+      setEditModal(false)
       updateUser();
       toast.success("Alteração realizada com sucesso!");
     } catch (error) {}
@@ -118,6 +119,7 @@ export function TechProvider({ children }) {
       });
       toast.success("Item deletado com sucesso!");
       closeDeleteModal();
+      window.localStorage.clear();
       navigate("/");
     } catch (error) {}
   }
