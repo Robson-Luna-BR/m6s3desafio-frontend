@@ -90,6 +90,7 @@ export const ListItem = styled.li`
   padding: 13px 22px;
   background-color: var(--grey-4);
   box-sizing: border-box;
+  flex-direction: column;
 
   :hover,
   :focus {

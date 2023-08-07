@@ -25,7 +25,7 @@ export function DashboardPage() {
           <Header styled="HeaderDashboard" logOut={logOut}></Header>
           <Section userData={userData} styled="UserInfo"></Section>
 
-          {/* <Section
+          <Section
             userData={userData}
             styled="TechList"
             showEditModal={showEditModal}
@@ -37,7 +37,7 @@ export function DashboardPage() {
             <EditTechModal></EditTechModal>
           ) : (
             <></>
-          )} */}
+          )}
         </MainDashboardContainer>
       )}
     </>

@@ -16,8 +16,10 @@ export function AddTechModal() {
   const { createTechRequest, closeCreateModal } = useContext(TechContext);
 
   const formSchema = yup.object().shape({
-    status: yup.string().required("Informe seu status"),
-    title: yup.string().required("Informe uma Tecnologia"),
+    
+    name: yup.string().required("Informe o nome do cliente"),
+    email: yup.string().required("Informe o nome do cliente").email("Digite um formato de email válido"),
+    phoneNumber: yup.string().required("Informe o telefone do cliente"),
   });
 
   const {
@@ -34,29 +36,39 @@ export function AddTechModal() {
         <Header
           styled="HeaderModal"
           click={closeCreateModal}
-          textTitle="Cadastar tecnologia"
+          textTitle="Cadastrar Cliente"
         ></Header>
 
         <MainForm>
           <form onSubmit={handleSubmit(createTechRequest)}>
-            <InputTitle>Nome</InputTitle>
+            <InputTitle>Cliente</InputTitle>
             <Input
               styled="inputCreateTech"
               type="text"
-              placeholder="Digite a tecnologia"
-              {...register("title")}
-              error={errors.title?.message}
+              placeholder="Digite o nome do cliente"
+              {...register("name")}
+              error={errors.name?.message}
             />
-            <SelectTitle>Selecionar status</SelectTitle>
-            <SelectModal {...register("status")}>
-              <option value="Iniciante">Iniciante</option>
-              <option value="Intermediário">Intermediário</option>
-              <option value="Avançado">Avançado</option>
-            </SelectModal>
+            <Input
+              styled="inputCreateTech"
+              type="text"
+              placeholder="Digite o email do cliente"
+              {...register("email")}
+              error={errors.email?.message}
+            />
+             <Input
+              styled="inputCreateTech"
+              type="text"
+              placeholder="Digite o nº de contato"
+              {...register("phoneNumber")}
+              error={errors.phoneNumber?.message}
+            />
+            
+           
             <Button
               styled="ButtonCreateTech"
               type="submit"
-              text="Cadastrar tecnologia"
+              text="Cadastrar cliente"
             ></Button>
           </form>
         </MainForm>

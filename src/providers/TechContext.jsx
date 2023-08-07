@@ -96,15 +96,17 @@ export function TechProvider({ children }) {
   async function createTechRequest(data) {
     let token = window.localStorage.getItem("@TOKEN");
     token = JSON.parse(token);
+    let id= window.localStorage.getItem("@USERID")
+    id= JSON.parse(id)
 
     try {
-      const response = await api.post("/users/techs", data, {
+      const response = await api.post(`/client/${id}`, data, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
       });
-      toast.success("Item Adicionado com sucesso!");
+      toast.success("Cliente Adicionado com sucesso!");
       updateUser();
       closeCreateModal();
     } catch (error) {

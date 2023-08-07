@@ -33,7 +33,7 @@ export function Section({ styled, userData, showEditModal, createTechModal }) {
           <Border></Border>
           <SectionTechList>
             <TechHeaderItemAlign>
-              <TechTitle>Tecnologias</TechTitle>
+              <TechTitle>Cliente</TechTitle>
               <Button
                 click={createTechModal}
                 text="+"
@@ -42,11 +42,12 @@ export function Section({ styled, userData, showEditModal, createTechModal }) {
             </TechHeaderItemAlign>
 
             <TechList>
-              {userData.techs.map((element) => {
+              {userData.client.map((element) => {
                 return (
                   <ListItem key={uuid()} onClick={() => showEditModal(element)}>
-                    <TechName>{element.title}</TechName>
-                    <TechStatus>{element.status}</TechStatus>
+                    <TechName>Clente:  {element.name}</TechName>
+                    <TechName>Email:  {element.email}</TechName>
+                    <TechName>Número:   {element.phoneNumber}</TechName>
                   </ListItem>
                 );
               })}
