@@ -17,9 +17,7 @@ export function DeleteUserModal() {
 
   const formSchema = yup.object().shape({
     
-    name: yup.string().required("Informe o nome do cliente"),
-    email: yup.string().required("Informe o nome do cliente").email("Digite um formato de email válido"),
-    phoneNumber: yup.string().required("Informe o telefone do cliente"),
+ 
   });
 
   const {
@@ -43,15 +41,15 @@ export function DeleteUserModal() {
         <MainForm>
           <form onSubmit={handleSubmit(deleteUserRequest)}>
             <InputTitle>Tem certeza que quer deletar esse usuário? </InputTitle>
-         
-            
-           
             <Button
               styled="ButtonCreateTech"
               type="submit"
               text="Deletar usuário"
               onClick={deleteUserRequest}
             ></Button>
+         
+            
+           
           </form>
         </MainForm>
       </CreateModal>

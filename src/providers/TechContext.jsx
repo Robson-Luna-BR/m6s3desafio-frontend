@@ -91,8 +91,25 @@ export function TechProvider({ children }) {
   }
 
 
-  function deleteUserRequest(){
-    console.log("alo")
+ async function deleteUserRequest(){
+  console.log("oi")
+ 
+  let token = window.localStorage.getItem("@TOKEN");
+  token = JSON.parse(token);
+  let id = window.localStorage.getItem("@USERID");
+  id = JSON.parse(id)
+  console.log(id)
+  try {
+    const response = await api.delete(`users/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    toast.success("Item deletado com sucesso!");
+    closeDeleteModal()
+    navigate("/")
+  } catch (error) {}
   }
 
   function createTechModal(data) {
