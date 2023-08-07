@@ -30,7 +30,9 @@ export function TechProvider({ children }) {
         const response = await api.get(`/users/${userId}`);
 
         setUserData(response.data);
-      } catch (error) {}
+      } catch (error) {
+        toast.error(error.response.data.message);
+      }
     }
     getUser();
   }, [refresh]);
@@ -48,7 +50,9 @@ export function TechProvider({ children }) {
       const response = await api.get(`/users/${userId}`);
 
       setUserData(response.data);
-    } catch (error) {}
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
   }
 
   async function editTechRequest(data) {
@@ -66,7 +70,9 @@ export function TechProvider({ children }) {
       setEditModal(false)
       updateUser();
       toast.success("Alteração realizada com sucesso!");
-    } catch (error) {}
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
   }
 
   async function deleteTechRequest() {
@@ -82,7 +88,9 @@ export function TechProvider({ children }) {
       toast.success("Item deletado com sucesso!");
       updateUser();
       closeEditModal();
-    } catch (error) {}
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
   }
   async function editUserRequest(data) {
     let token = window.localStorage.getItem("@TOKEN");
@@ -101,7 +109,9 @@ export function TechProvider({ children }) {
 
       setEditUserModal(false);
       setRefresh(refresh + 1);
-    } catch (error) {}
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
   }
 
   async function deleteUserRequest() {
@@ -121,7 +131,9 @@ export function TechProvider({ children }) {
       closeDeleteModal();
       window.localStorage.clear();
       navigate("/");
-    } catch (error) {}
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
   }
 
   function createTechModal(data) {
