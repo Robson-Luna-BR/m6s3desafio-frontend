@@ -100,7 +100,8 @@ export function TechProvider({ children }) {
 
       setEditUserModal(false);
       setRefresh(true);
-      navigate("/dashboard");
+      console.log(userData)
+      console.log(response)
     } catch (error) {
       console.log(error.message);
     }
