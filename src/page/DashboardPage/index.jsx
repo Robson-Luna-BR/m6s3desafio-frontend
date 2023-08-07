@@ -33,7 +33,7 @@ export function DashboardPage() {
           ></Section>
 
           {createModal ? <AddTechModal></AddTechModal> : <> </>}
-          {editModal && editTech.title ? (
+          {editModal  ? (
             <EditTechModal></EditTechModal>
           ) : (
             <></>

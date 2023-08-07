@@ -18,8 +18,8 @@ export function EditTechModal() {
     useContext(TechContext);
 
   const formSchema = yup.object().shape({
-    status: yup.string().required("Informe seu status"),
-    title: yup.string(),
+    name: yup.string().required("Informe o nome do cliente"),
+    email: yup.string().required("Informe o email do cliente").email("informe um formato válido de email"),
   });
 
   const {
@@ -36,24 +36,35 @@ export function EditTechModal() {
         <Header
           styled="HeaderModal"
           click={closeEditModal}
-          textTitle="Tecnologia Detalhes"
+          textTitle="Detalhes do Cliente"
         ></Header>
         <MainForm>
           <form onSubmit={handleSubmit(editTechRequest)}>
-            <InputTitle>Nome do projeto</InputTitle>
+          <InputTitle>Nome</InputTitle>
             <Input
-              disabled={true}
-              inputValue={editTech.title}
-              {...register("title")}
-              placeholder={editTech.title}
+              // disabled={true}
+              // inputValue={editTech.title}
+              {...register("name")}
+              placeholder="digite o nome do cliente"
+            />
+            <InputTitle></InputTitle>
+            <InputTitle>Email</InputTitle>
+              <Input
+              // disabled={true}
+              // inputValue={editTech.title}
+              {...register("email")}
+              placeholder="digite o email do cliente"
+            />
+            <InputTitle></InputTitle>
+            <InputTitle>Telefone</InputTitle>
+              <Input
+              // disabled={true}
+              // inputValue={editTech.title}
+              {...register("email")}
+              placeholder="digite o email do cliente"
             />
 
-            <SelectTitle>Status</SelectTitle>
-            <SelectModal {...register("status")}>
-              <option value="Iniciante">Iniciante</option>
-              <option value="Intermediário">Intermediário</option>
-              <option value="Avançado">Avançado</option>
-            </SelectModal>
+            
             <ButtonAlign>
               <Button
                 styled="ButtonSaveTechChange"

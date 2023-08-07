@@ -14,7 +14,11 @@ export function TechProvider({ children }) {
   const [editTech, setEditTech] = useState();
   const [createModal, setCreateModal] = useState(false);
 
+
   const navigate = useNavigate();
+
+ 
+
 
   useEffect(() => {
     let userId = window.localStorage.getItem("@USERID");
@@ -25,14 +29,17 @@ export function TechProvider({ children }) {
         userId = JSON.parse(userId);
 
         const response = await api.get(`/users/${userId}`);
-
+        console.log(response.data, "esse aqui")
         setUserData(response.data);
       } catch (error) {}
     }
     getUser();
   }, []);
 
+
+
   function showEditModal(element) {
+    console.log(element)
     setEditTech(element);
 
     setEditModal(true);
@@ -51,9 +58,9 @@ export function TechProvider({ children }) {
   async function editTechRequest(data) {
     let token = window.localStorage.getItem("@TOKEN");
     token = JSON.parse(token);
-
+      console.log(editTech.id)
     try {
-      const response = await api.put(`/users/techs/${editTech.id}`, data, {
+      const response = await api.patch(`/client/${editTech.id}`, data, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -64,6 +71,7 @@ export function TechProvider({ children }) {
       toast.success("Alteração realizada com sucesso!");
     } catch (error) {}
   }
+ 
 
   async function deleteTechRequest() {
     let token = window.localStorage.getItem("@TOKEN");
@@ -93,6 +101,7 @@ export function TechProvider({ children }) {
     setCreateModal(false);
   }
 
+
   async function createTechRequest(data) {
     let token = window.localStorage.getItem("@TOKEN");
     token = JSON.parse(token);
@@ -119,6 +128,8 @@ export function TechProvider({ children }) {
     window.localStorage.clear();
     navigate("/");
   }
+
+
 
   return (
     <TechContext.Provider
