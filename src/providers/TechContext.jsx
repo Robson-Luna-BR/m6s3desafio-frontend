@@ -46,8 +46,15 @@ export function TechProvider({ children }) {
   async function updateUser() {
     let userId = window.localStorage.getItem("@USERID");
     userId = JSON.parse(userId);
+    let token = window.localStorage.getItem("@TOKEN");
+    token = JSON.parse(token);
     try {
-      const response = await api.get(`/users/${userId}`);
+      const response = await api.get(`/users/${userId}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       setUserData(response.data);
     } catch (error) {
@@ -66,8 +73,8 @@ export function TechProvider({ children }) {
           Authorization: `Bearer ${token}`,
         },
       });
-      
-      setEditModal(false)
+
+      setEditModal(false);
       updateUser();
       toast.success("Alteração realizada com sucesso!");
     } catch (error) {
