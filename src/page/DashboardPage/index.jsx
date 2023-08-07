@@ -7,6 +7,7 @@ import { TechContext } from "../../providers/TechContext";
 import { AddTechModal } from "../../components/AddTechModal";
 import { EditTechModal } from "../../components/EditTechModal";
 import { DeleteUserModal } from "../../components/DeleteUserModal";
+import { EditUserModal } from "../../components/EditUserModal";
 
 export function DashboardPage() {
   const { userData, setUserData, navigate } = useContext(UserContext);
@@ -19,6 +20,7 @@ export function DashboardPage() {
     createTechModal,
     deleteUserModal,
     openUserModal,
+    editUserModal
     
   } = useContext(TechContext);
 
@@ -45,6 +47,7 @@ export function DashboardPage() {
             <></>
           )}
           {deleteUserModal ? <DeleteUserModal></DeleteUserModal> : <> </>}
+          {editUserModal ? <EditUserModal></EditUserModal> : <> </>}
         </MainDashboardContainer>
       )}
     </>

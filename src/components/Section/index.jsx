@@ -25,9 +25,10 @@ export function Section({
   createTechModal,
   deleteUserModal,
   openUserModal,
+  
  
 }) {
-  const { setDeleteUserModal } = useContext(TechContext);
+  const { setDeleteUserModal,setEditUserModal } = useContext(TechContext);
   switch (styled) {
     case "UserInfo":
       return (
@@ -35,7 +36,7 @@ export function Section({
           <SectionUserName>Olá, {userData.name} </SectionUserName>
           <Button
             styled="ButtonBack"
-            click={() =>console.log("clicou")}
+            click={() =>setEditUserModal(true)}
             text="Editar"
           ></Button>
           <Button

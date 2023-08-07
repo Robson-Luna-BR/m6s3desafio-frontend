@@ -14,10 +14,12 @@ export function TechProvider({ children }) {
   const [editTech, setEditTech] = useState();
   const [createModal, setCreateModal] = useState(false);
   const [deleteUserModal, setDeleteUserModal] = useState(false);
+  const [editUserModal, setEditUserModal] = useState(false);
+  const [refresh, setRefresh]= useState(false)
 
   const navigate = useNavigate();
 
- 
+
 
 
   useEffect(() => {
@@ -34,7 +36,7 @@ export function TechProvider({ children }) {
       } catch (error) {}
     }
     getUser();
-  }, []);
+  }, [refresh]);
 
 
 
@@ -56,9 +58,11 @@ export function TechProvider({ children }) {
   }
 
   async function editTechRequest(data) {
+    console.log("alo")
     let token = window.localStorage.getItem("@TOKEN");
     token = JSON.parse(token);
       console.log(editTech.id)
+      console.log(data)
     try {
       const response = await api.patch(`/client/${editTech.id}`, data, {
         headers: {
@@ -89,7 +93,32 @@ export function TechProvider({ children }) {
       closeEditModal();
     } catch (error) {}
   }
+  async function editUserRequest(data){
+    console.log(data,"*/*/*/*/*/*/*/*/*")
+   
+    let token = window.localStorage.getItem("@TOKEN");
+    token = JSON.parse(token);
+    let id = window.localStorage.getItem("@USERID");
+    id = JSON.parse(id)
+    console.log(id)
+    console.log(data)
+    try {
+      const response = await api.patch(`users/${id}`,data, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      toast.success("usuário com sucesso!");
 
+      
+      setEditUserModal(false)
+      setRefresh(true)
+      navigate("/dashboard")
+    } catch (error) {
+      console.log(error.message)
+    }
+    }
 
  async function deleteUserRequest(){
   console.log("oi")
@@ -132,6 +161,10 @@ export function TechProvider({ children }) {
 
   function closeDeleteModal() {
     setDeleteUserModal(false)
+  }
+
+  function closeEditUserModal() {
+    setEditUserModal(false)
   }
 
   async function createTechRequest(data) {
@@ -184,7 +217,11 @@ export function TechProvider({ children }) {
         setDeleteUserModal,
         closeDeleteModal,
         openUserModal,
-        deleteUserRequest
+        deleteUserRequest,
+        editUserModal,
+        setEditUserModal,
+        closeEditUserModal,
+        editUserRequest
       }}
     >
       {children}
