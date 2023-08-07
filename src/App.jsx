@@ -1,25 +1,12 @@
-import logo from "./logo.svg";
-import "./App.css";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Routes, Route } from "react-router-dom";
-import { LoginPage } from "./components/page/LoginPage";
-import { useEffect, useState } from "react";
+
+import { AppRoutes } from "./routes";
 
 function App() {
-  const [userData, setUserData] = useState(null);
-
-  //  useEffect(()=> {
-  //   console.log(userData)
-  //  },[userData])
-
   return (
     <>
-      <Routes>
-        <Route path="/" element={<LoginPage setUserData={setUserData} />}>
-          {" "}
-        </Route>
-      </Routes>
+      <AppRoutes />
       <ToastContainer />
     </>
   );
